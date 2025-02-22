@@ -1,18 +1,29 @@
-// JavaScript Document
 let nextDom = document.getElementById('next');
 let prevDom = document.getElementById('prev');
-let carouselDom = document.getElementById('.carousel');
-let listIremDom = document.getElementById('.carousel .list');
-let thumbnailDom = document.getElementById('.carousel .thumbnail');
+let carouselDom = document.getElementById('carousel');
+let listItemDom = document.querySelector('.carousel .list');
+let thumbnailDom = document.querySelector('.carousel .thumbnail');
 
+nextDom.onclick = function () {
+    showSlider('next');
+}
 
-nextDom.onclick = function(){
-	showSlider('next');
+prevDom.onclick = function () {
+    showSlider('prev');
 }
-function showslider(type){
-	let itemSlider = document.querySelectorAll('.carousel .list .item')
-	let itemThumbnail.querySelectorAll('.carousel .thumbnail .item')
-}
-if(type == 'next'){
-	listIremDom.appendChild(itemSlider[0]);
+
+function showSlider(type) {
+    let itemSlider = document.querySelectorAll('.carousel .list .item');
+    let itemThumbnail = document.querySelectorAll('.carousel .thumbnail .item');
+
+    if (type === 'next') {
+        listItemDom.appendChild(itemSlider[0]);
+        thumbnailDom.appendChild(itemThumbnail[0]);
+    } else {
+        let lastItem = itemSlider[itemSlider.length - 1];
+        let lastThumbnail = itemThumbnail[itemThumbnail.length - 1];
+        
+        listItemDom.prepend(lastItem);
+        thumbnailDom.prepend(lastThumbnail);
+    }
 }
